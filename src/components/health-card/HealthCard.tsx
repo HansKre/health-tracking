@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CardInfo, CardType, CardValue } from 'types/types';
 import { Button } from './Button';
 import { Input } from './Input';
@@ -31,11 +31,16 @@ export default function HealthCard({
   average,
 }: Props) {
   const ref = useRef<HTMLInputElement>(null);
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     if (ref.current) {
       ref.current.value = state.value;
     }
+  }, [state]);
+
+  useEffect(() => {
+    setEdit(false);
   }, [state]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -54,10 +59,14 @@ export default function HealthCard({
     }
   }
 
+  function toggleEdit() {
+    setEdit((prev) => !prev);
+  }
+
   return (
     <CardContainer>
-      <CardHeader label={cards[type].label} />
-      {!state.submitted && (
+      <CardHeader label={cards[type].label} onEditClicked={toggleEdit} />
+      {(!state.submitted || edit) && (
         <FlexForm onSubmit={handleSubmit}>
           <Input
             ref={ref}
@@ -71,7 +80,7 @@ export default function HealthCard({
           <Button>Submit</Button>
         </FlexForm>
       )}
-      {state.submitted && (
+      {state.submitted && !edit && (
         <SubmittedContainer>
           <SubmittedText>
             {state.value} {cards[type].unit}
