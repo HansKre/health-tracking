@@ -29,6 +29,23 @@ p {
   color: #1b2c4b;
 }
 
+h1 {
+  margin: 0.75rem 0; /* 12px */
+}
+
+h2 {
+  margin: 0.5rem 0; /* 8px */
+}
+
 label {
   color: #3a4963;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+
+input,
+button {
+  font-family: inherit;
 }
