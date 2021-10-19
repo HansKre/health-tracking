@@ -20,6 +20,7 @@ interface Props {
   state: CardValue;
   onSubmit: (val: CardValue, type: CardType) => void;
   trend: React.ReactNode;
+  average: number;
 }
 
 export default function HealthCard({
@@ -27,6 +28,7 @@ export default function HealthCard({
   state = { value: '', submitted: false },
   onSubmit,
   trend,
+  average,
 }: Props) {
   const ref = useRef<HTMLInputElement>(null);
 
@@ -76,7 +78,7 @@ export default function HealthCard({
           </SubmittedText>
           {trend}
           <SubmittedText>
-            ⌀ {state.value} {cards[type].unit}
+            ⌀ {average} {cards[type].unit}
           </SubmittedText>
         </SubmittedContainer>
       )}
