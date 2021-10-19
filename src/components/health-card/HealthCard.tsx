@@ -12,6 +12,9 @@ const CardContainer = styled.article`
   border-width: 1px;
   border-color: ${mainTheme.palette.secondary};
   border-radius: ${mainTheme.borderRadius};
+  &:hover {
+    outline: ${mainTheme.palette.secondary} dashed 1px;
+  }
 `;
 
 const FlexForm = styled.form`
@@ -56,6 +59,7 @@ const Input = styled.input`
 const Label = styled.label`
   align-self: center;
   padding: ${mainTheme.paddingTBLR};
+  font-size: ${mainTheme.typography.label};
 `;
 
 type CardType = 'bloodPressure' | 'weight' | 'bloodGlucoseLevel';
