@@ -17,11 +17,11 @@ export default function DatePicker({ date, onChange }: Props) {
 
   return (
     <nav style={{ display: 'flex' }}>
-      <ArrowButton onClick={decreaseDate}>{'<'}</ArrowButton>
+      <ArrowButton onClick={decreaseDate}>&#8592;</ArrowButton>
       <h2>
         <u>{`${dateString(date)}´s`}</u> measurements
       </h2>
-      <ArrowButton onClick={increaseDate}>{'>'}</ArrowButton>
+      <ArrowButton onClick={increaseDate}>&#8594;</ArrowButton>
     </nav>
   );
 }
