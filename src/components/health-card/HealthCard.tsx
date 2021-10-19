@@ -5,6 +5,9 @@ import { Input } from './Input';
 import { FlexForm } from './FlexForm';
 import { Label } from './Label';
 import { CardContainer } from './CardContainer';
+import { SubmittedText } from './SubmittedText';
+import { SubmittedContainer } from './SubmittedContainer';
+import CardHeader from './CardHeader';
 
 const cards: Record<CardType, CardInfo> = {
   bloodPressure: { label: 'Blood Pressure', unit: 'mmHg' },
@@ -16,12 +19,14 @@ interface Props {
   type: CardType;
   state: CardValue;
   onSubmit: (val: CardValue, type: CardType) => void;
+  trend: React.ReactNode;
 }
 
 export default function HealthCard({
   type,
   state = { value: '', submitted: false },
   onSubmit,
+  trend,
 }: Props) {
   const ref = useRef<HTMLInputElement>(null);
 
@@ -49,7 +54,7 @@ export default function HealthCard({
 
   return (
     <CardContainer>
-      <p>{cards[type].label}</p>
+      <CardHeader label={cards[type].label} />
       {!state.submitted && (
         <FlexForm onSubmit={handleSubmit}>
           <Input
@@ -64,7 +69,17 @@ export default function HealthCard({
           <Button>Submit</Button>
         </FlexForm>
       )}
-      {state.submitted && <p>{state.value}</p>}
+      {state.submitted && (
+        <SubmittedContainer>
+          <SubmittedText>
+            {state.value} {cards[type].unit}
+          </SubmittedText>
+          {trend}
+          <SubmittedText>
+            ⌀ {state.value} {cards[type].unit}
+          </SubmittedText>
+        </SubmittedContainer>
+      )}
     </CardContainer>
   );
 }
