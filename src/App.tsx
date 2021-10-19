@@ -1,8 +1,10 @@
+import { MainContainer } from '@components';
+
 function App() {
   return (
-    <div className='container'>
+    <MainContainer>
       <h1>Hello World!</h1>
-    </div>
+    </MainContainer>
   );
 }
 
