@@ -9,3 +9,9 @@ export type CardValue = {
   value: string;
   submitted: boolean;
 };
+
+type Measures = Record<CardType, CardValue>;
+
+type MeasureDate = string;
+
+export type AppState = Record<MeasureDate, Measures>;

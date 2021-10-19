@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { CardInfo, CardType, CardValue } from '@config/types/types';
+import { CardInfo, CardType, CardValue } from 'types/types';
 import { Button } from './Button';
 import { Input } from './Input';
 import { FlexForm } from './FlexForm';

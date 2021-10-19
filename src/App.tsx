@@ -1,17 +1,16 @@
 import {
   DatePicker,
   FullWidthSection,
-  HealthCard,
   MainContainer,
+  Measurements,
 } from '@components';
 import { useState } from 'react';
-import { CardType, CardValue } from './types/types';
+import { AppState, CardType, CardValue } from './types/types';
 
 function App() {
   const [date, setDate] = useState(new Date());
-  const [state, setState] = useState<
-    Record<string, Record<CardType, CardValue>>
-  >({});
+
+  const [state, setState] = useState<AppState>({});
 
   function handleSubmit(val: CardValue, type: CardType): void {
     setState((prev) => {
@@ -31,21 +30,7 @@ function App() {
       <h1>Health Tracking</h1>
       <FullWidthSection>
         <DatePicker date={date} onChange={setDate} />
-        <HealthCard
-          type={'bloodPressure'}
-          state={state[date.toLocaleDateString()]?.bloodPressure}
-          onSubmit={handleSubmit}
-        />
-        <HealthCard
-          type={'weight'}
-          state={state[date.toLocaleDateString()]?.weight}
-          onSubmit={handleSubmit}
-        />
-        <HealthCard
-          type={'bloodGlucoseLevel'}
-          state={state[date.toLocaleDateString()]?.bloodGlucoseLevel}
-          onSubmit={handleSubmit}
-        />
+        <Measurements date={date} state={state} onSubmit={handleSubmit} />
       </FullWidthSection>
     </MainContainer>
   );

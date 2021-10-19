@@ -5,8 +5,10 @@
       "@animations*": ["components/animations*"],
       "@components": ["components/"],
       "@components/*": ["components/*"],
-      "@config/*": ["*"],
+      "@src/*": ["*"],
       "@styles/*": ["styles/*"],
+      "@types": ["types/"],
+      "@types/*": ["types/*"],
       "@utils/*": ["utils/*"]
     }
   }
