@@ -13,10 +13,11 @@ function calcAverage(state: AppState, type: CardType): number {
   const sum = Object.values(state).reduce(
     (prev, current) => {
       const parsed = parseInt(current[type]?.value);
-      if (!isNaN(parsed)) {
+      if (isNaN(parsed)) {
+        return prev;
+      } else {
         return { sum: prev.sum + parsed, hits: prev.hits + 1 };
       }
-      return prev;
     },
     { sum: 0, hits: 0 }
   );
