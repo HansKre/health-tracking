@@ -17,7 +17,7 @@ const cards: Record<CardType, CardInfo> = {
 
 interface Props {
   type: CardType;
-  state: CardValue;
+  value: CardValue;
   onSubmit: (val: CardValue, type: CardType) => void;
   trend: React.ReactNode;
   average: number;
@@ -25,7 +25,7 @@ interface Props {
 
 export default function HealthCard({
   type,
-  state = { value: '', submitted: false },
+  value: state = { value: '', submitted: false },
   onSubmit,
   trend,
   average,

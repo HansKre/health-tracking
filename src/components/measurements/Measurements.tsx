@@ -40,21 +40,21 @@ export default function Measurements({ date, state, onSubmit }: Props) {
     <>
       <HealthCard
         type={'bloodPressure'}
-        state={state[date.toLocaleDateString()]?.bloodPressure}
+        value={state[date.toLocaleDateString()]?.bloodPressure}
         onSubmit={onSubmit}
         trend={<Trend type={'bloodPressure'} date={date} appState={state} />}
         average={bloodPressureAverage}
       />
       <HealthCard
         type={'weight'}
-        state={state[date.toLocaleDateString()]?.weight}
+        value={state[date.toLocaleDateString()]?.weight}
         onSubmit={onSubmit}
         trend={<Trend type={'weight'} date={date} appState={state} />}
         average={weightAverage}
       />
       <HealthCard
         type={'bloodGlucoseLevel'}
-        state={state[date.toLocaleDateString()]?.bloodGlucoseLevel}
+        value={state[date.toLocaleDateString()]?.bloodGlucoseLevel}
         onSubmit={onSubmit}
         trend={
           <Trend type={'bloodGlucoseLevel'} date={date} appState={state} />
