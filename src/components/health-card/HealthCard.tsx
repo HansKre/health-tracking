@@ -59,6 +59,16 @@ export default function HealthCard({
     }
   }
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    onSubmit(
+      {
+        value: e.currentTarget.value.toString(),
+        submitted: false,
+      },
+      type
+    );
+  }
+
   function toggleEdit() {
     setEdit((prev) => !prev);
   }
@@ -74,6 +84,7 @@ export default function HealthCard({
             name={type}
             id={type}
             defaultValue={state.value}
+            onChange={handleChange}
           />
           <Label htmlFor={type}>{cards[type].unit}</Label>
           <br />
