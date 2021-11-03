@@ -34,12 +34,6 @@ export default function HealthCard({
   const [edit, setEdit] = useState(false);
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.value = state.value;
-    }
-  }, [state]);
-
-  useEffect(() => {
     setEdit(false);
   }, [state]);
 
@@ -83,7 +77,7 @@ export default function HealthCard({
             type='number'
             name={type}
             id={type}
-            defaultValue={state.value}
+            value={state.value}
             onChange={handleChange}
           />
           <Label htmlFor={type}>{cards[type].unit}</Label>
