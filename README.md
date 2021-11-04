@@ -32,3 +32,4 @@ yarn start
 3. Add animations with `framer-motion`
 4. Replace Lato Bold with Lato Semibold Font (not available as Google Font)
 5. Responsiveness
+6. Add Tests
